@@ -4,7 +4,7 @@ This is a school group Project
 Summary:
 I. Project Definition
 
-Goal: Create a mobile or web-based calendar tool to assist students manage their schedules and stay organized.
+Goal: Use bootstrap to create and style a calendar tool to assist students manage their schedules and stay organized.
 
 II. Core functionalities
 
@@ -41,25 +41,3 @@ Study Timer & Breaks:
 Integrate a study timer with customizable intervals and breaks to help students manage study sessions effectively.
 
 Offer options for white noise or background music to enhance focus.
-
-III. Additional Features (Optional)
-
-Advanced Search: 
-
-Include search capabilities to locate certain events or keywords inside descriptions.
-
-Synchronization: 
-
-Allow for easy access across different devices (phone, tablet, and PC).
-
-Progress tracker:
-
-To see approaching deadlines, accomplished tasks, and the overall workload balance.
-
-Gemini Time Estimate: 
-
-to estimate time needed for each assignment
-
-Pormoto Timer
-
-With flexible intervals and breaks
