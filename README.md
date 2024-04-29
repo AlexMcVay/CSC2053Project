@@ -36,8 +36,4 @@ Create special sections for forthcoming examinations and quizzes using important
 
 Set reminders with customizable notification options for upcoming exams.
 
-Study Timer & Breaks:
 
-Integrate a study timer with customizable intervals and breaks to help students manage study sessions effectively.
-
-Offer options for white noise or background music to enhance focus.
