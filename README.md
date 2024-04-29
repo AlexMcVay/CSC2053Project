@@ -24,7 +24,7 @@ Provide many calendar views (day, week, month, semester, and year agendas).  All
 
 Class Schedule:  
 
- Allow for easy import of class schedules that include room numbers, professor information, and meeting hours.  Integrate with common school scheduling tools, if possible.  
+ Allow for easy import of class schedules that include room numbers, professor information, and meeting hours.    
 
 Assignment Management:   
 
