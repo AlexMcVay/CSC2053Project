@@ -26,14 +26,10 @@ Class Schedule:
 
  Allow for easy import of class schedules that include room numbers, professor information, and meeting hours.    
 
-Assignment Management:   
-
-Create and monitor assignments, including due dates, priority, and full descriptions.  Attach files (pictures, papers) to assignments as reference material.  
 
 Exam and Quiz Tracking:  
 
 Create special sections for forthcoming examinations and quizzes using important details like date, time, and subject.
 
-Set reminders with customizable notification options for upcoming exams.
 
 
