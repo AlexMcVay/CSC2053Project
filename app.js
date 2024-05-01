@@ -65,3 +65,55 @@ $(document).ready(function() {
     });
   
   });
+
+  $(document).ready(function() {
+    // Sample data (replace with logic to store and retrieve data)
+    var schedule = [];
+
+    // Function to add an event to the schedule
+    function addScheduleEvent() {
+        var title = $("#event-title").val();
+        var date = $("#event-date").val();
+        var time = $("#event-time").val();
+        var weeklyRecurrence = $("#weeklyreccurrence").val();
+        
+        if (title !== "" && date !== "" && time !== "") {
+            var repeatDays = ["None", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+            var repeat = repeatDays[parseInt(weeklyRecurrence)];
+
+            var eventDetails = "Title: " + title + " Date: " + date + " Time: " + time + " Repeat: " + repeat;
+            var scheduleList = $("#schedule-list");
+            scheduleList.append("<li>" + eventDetails + "</li>");
+
+            // Push event details to schedule array if needed for further processing
+            schedule.push({
+                title: title,
+                date: date,
+                time: time,
+                repeat: repeat
+            });
+
+            // Clear input fields after adding event
+            $("#event-title").val("");
+            $("#event-date").val("");
+            $("#event-time").val("");
+            $("#weeklyreccurrence").val("0");
+        }
+    }
+
+    // Add event listener to the add schedule button
+    $("#add-schedule-btn").click(addScheduleEvent);
+
+    // Function to add a to-do item to the list
+    function addTodoItem() {
+        var todoText = $("#todo-input").val().trim();
+        if (todoText !== "") {
+            var todoList = $("#todo-list");
+            todoList.append("<li>" + todoText + "</li>");
+            $("#todo-input").val(""); // Clear the input field
+        }
+    }
+
+    // Add event listener to the to-do button
+    $("#add-todo-btn").click(addTodoItem);
+});
