@@ -102,7 +102,51 @@ $(document).ready(function() {
     }
 
     // Add event listener to the add schedule button
-    $("#add-schedule-btn").click(addScheduleEvent);
+    // Add event listener to the "Add Event" button
+$("#add-schedule-btn").click(function() {
+  var title = $("#event-title").val();
+  var date = $("#event-date").val();
+  var time = $("#event-time").val();
+  var weeklyRecurrence = $("#weeklyreccurrence").val();
+
+  // Validate input fields
+  if (!title || !date || !time) {
+    alert("Please fill in all fields");
+    return;
+  }
+
+  // Call the function to add the event to the schedule
+  addScheduleEvent(title, date, time, weeklyRecurrence);
+
+  // Update the schedule list UI
+  updateScheduleList();
+
+  // Clear input fields
+  $("#event-title").val("");
+  $("#event-date").val("");
+  $("#event-time").val("");
+  $("#weeklyreccurrence").val("0");
+});
+
+// Add event listener to the "Add To-Do" button
+$("#add-todo-btn").click(function() {
+  var todo = $("#todo-input").val();
+
+  // Validate input field
+  if (!todo) {
+    alert("Please enter a task");
+    return;
+  }
+
+  // Call the function to add the to-do item to the list
+  addTodoItem(todo);
+
+  // Update the To-Do list UI
+  updateTodoList();
+
+  // Clear input field
+  $("#todo-input").val("");
+});
 
     // Function to add a to-do item to the list
     function addTodoItem() {
@@ -111,9 +155,72 @@ $(document).ready(function() {
             var todoList = $("#todo-list");
             todoList.append("<li>" + todoText + "</li>");
             $("#todo-input").val(""); // Clear the input field
+            //update caledar
+            calendar.refetchEvents(events);
         }
     }
 
     // Add event listener to the to-do button
     $("#add-todo-btn").click(addTodoItem);
+    
+});
+
+// Add event listener to the "Add Date" button
+$("#add-date-btn").click(function() {
+  var date = $("#date-input").val();
+  var description = $("#description-input").val();
+
+  // Validate input fields
+  if (!date || !description) {
+    alert("Please fill in all fields");
+    return;
+  }
+
+  // Call the function to add the date to the list
+  addImportantDate(date, description);
+
+  // Update the important dates list UI
+  updateImportantDatesList();
+
+  // Clear input fields
+  $("#date-input").val("");
+  $("#description-input").val("");
+});
+function addImportantDate(date, description) {
+  // Create list item
+  var listItem = $('<li></li>').text(description + ' - ' + date);
+
+  // Append list item to the list
+  $("#important-dates-list").append(listItem);
+  // Clear input fields
+  $("#date-input, #description-input").val("");
+  //update caledar
+  calendar.refetchEvents(events);
+}
+
+// Calendar stuff
+document.addEventListener('DOMContentLoaded', function() {
+  var calendarEl = document.getElementById('calendar');
+
+  // Fetch events from the schedule section
+  var events = [];
+  $('.schedule-event').each(function() {
+    var title = $(this).find('.event-title').text();
+    var date = $(this).find('.event-date').text();
+    events.push({ title: title, start: date });
+  });
+
+  // Fetch events from the important dates section
+  $('.important-date').each(function() {
+    var description = $(this).find('.date-description').text();
+    var date = $(this).find('.date-value').text();
+    events.push({ title: description, start: date });
+  });
+
+  var calendar = new FullCalendar.Calendar(calendarEl, {
+    initialView: 'dayGridMonth',
+    events: events
+  });
+
+  calendar.render();
 });
