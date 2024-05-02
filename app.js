@@ -202,19 +202,12 @@ function addImportantDate(date, description) {
 document.addEventListener('DOMContentLoaded', function() {
   var calendarEl = document.getElementById('calendar');
 
-  // Fetch events from the schedule section
+  // Fetch events from the schedule and important dates sections
   var events = [];
-  $('.schedule-event').each(function() {
+  $('#schedule-list li, #important-dates-list li').each(function() {
     var title = $(this).find('.event-title').text();
     var date = $(this).find('.event-date').text();
     events.push({ title: title, start: date });
-  });
-
-  // Fetch events from the important dates section
-  $('.important-date').each(function() {
-    var description = $(this).find('.date-description').text();
-    var date = $(this).find('.date-value').text();
-    events.push({ title: description, start: date });
   });
 
   var calendar = new FullCalendar.Calendar(calendarEl, {
@@ -223,4 +216,14 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 
   calendar.render();
+
+   // Add event listener to change the calendar view
+   document.getElementById('changeViewBtn').addEventListener('click', function() {
+    if (calendar.view.type === 'dayGridMonth') {
+      calendar.changeView('dayGridWeek'); // Change the calendar view to weekly
+    }
+    else {
+      calendar.changeView('dayGridMonth'); // Change the calendar view to monthly
+    }
+  });
 });
